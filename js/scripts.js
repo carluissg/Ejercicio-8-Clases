@@ -79,3 +79,12 @@ const bronn =
 
 const totalPersonajes = [joeffreyBaratheon, jamieLannister,
   daenerysTargaryen, tyrionLannister, bronn];
+
+function mensajePersonajes(nPersonajes) {
+  const totalMensajes = nPersonajes
+    .filter(personaje => personaje.arma)
+    .map(personaje => personaje.comunicar());
+  return totalMensajes;
+}
+
+console.log(mensajePersonajes(totalPersonajes));
