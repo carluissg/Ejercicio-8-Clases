@@ -112,7 +112,4 @@ const mensajes = totalPersonajes.map((personaje) => personaje.comunicarse());
 
 console.log(mensajes);
 
-bronn.personajeQuesirve = daenerysTargaryen;
-console.log(bronn);
-
 console.log(mensajePersonajes(totalPersonajes));
