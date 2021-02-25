@@ -1,7 +1,3 @@
-class JuegoTronos {
-
-}
-
 class Personajes extends JuegoTronos {
   nombre;
   familia;
