@@ -9,16 +9,15 @@ class Personajes {
     this.familia = suFamilia;
     this.edad = suEdad;
     this.estado = suEstado;
-    comunicarse() {
-      return "";
-    }
 
-    morir() {
-      return estado = "";
-    }
   }
 
-  class Rey extends Personajes {
+  morir() {
+    this.estado = "muerto";
+  }
+
+}
+class Rey extends Personajes {
   añosReinado;
   constructor(suNombre, suFamilia, suEdad, suEstado, tiempoReinado) {
     super(suNombre, suFamilia, suEdad, suEstado);
@@ -39,6 +38,14 @@ class Luchador extends Personajes {
   comunicarse() {
     return "Primero pego y luego pregunto";
   }
+
+  set destreza(suDestreza) {
+    if (suDestreza > 0 && suDestreza <= 10) {
+      this.destreza = suDestreza;
+    } else if (suDestreza > 10) {
+      this.destreza = 10;
+    }
+  }
 }
 class Asesor extends Personajes {
   personajeAsesorado;
@@ -51,11 +58,25 @@ class Asesor extends Personajes {
   }
 }
 class Escudero extends Personajes {
-  personajeQueSirve = "Jamie";
+  personajeQueSirve;
   gradoPelotismo;
   constructor(suNombre, suFamilia, suEdad, suEstado, pelota) {
     super(suNombre, suFamilia, suEdad, suEstado);
     this.gradoPelotismo = pelota;
+  }
+
+  set personajeQuesirve(personaje) {
+    if (personaje === Luchador) {
+      this.personajeQuesirve = personaje;
+    }
+  }
+
+  set gradoPelotismo(pelota) {
+    if (pelota > 0 && pelota <= 10) {
+      this.gradoPelotismo = pelota;
+    } else if (pelota > 10) {
+      this.gradoPelotismo = 10;
+    }
   }
   comunicarse() {
     return "Soy un loser";
@@ -86,5 +107,12 @@ function mensajePersonajes(nPersonajes) {
     .map(personaje => personaje.comunicar());
   return totalMensajes;
 }
+
+const mensajes = totalPersonajes.map((personaje) => personaje.comunicarse());
+
+console.log(mensajes);
+
+bronn.personajeQuesirve = daenerysTargaryen;
+console.log(bronn);
 
 console.log(mensajePersonajes(totalPersonajes));
