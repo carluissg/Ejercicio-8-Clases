@@ -3,7 +3,7 @@ class Personajes {
   familia;
   edad;
   estado;
-  serie = "Juego de Trono";
+  serie = "Juego de Tronos";
   constructor(suNombre, suFamilia, suEdad, suEstado) {
     this.nombre = suNombre;
     this.familia = suFamilia;
@@ -37,7 +37,7 @@ class Luchador extends Personajes {
     this.destreza = suDestreza;
   }
   comunicarse() {
-    return "Primero pego y leugo pregunto";
+    return "Primero pego y luego pregunto";
   }
 }
 class Asesor extends Personajes {
@@ -79,3 +79,12 @@ const bronn =
 
 const totalPersonajes = [joeffreyBaratheon, jamieLannister,
   daenerysTargaryen, tyrionLannister, bronn];
+
+function mensajePersonajes(nPersonajes) {
+  const totalMensajes = nPersonajes
+    .filter(personaje => personaje.arma)
+    .map(personaje => personaje.comunicar());
+  return totalMensajes;
+}
+
+console.log(mensajePersonajes(totalPersonajes));
