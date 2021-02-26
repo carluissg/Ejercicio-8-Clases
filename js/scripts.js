@@ -139,3 +139,34 @@ function matar(personajes) {
 //Resumen de los Personajes
 
 
+resumenPersonajes(totalPersonajes);
+
+function resumenPersonajes(datos) {
+  const totalDePersonajesFinal = [];
+  totalDePersonajesFinal.push({
+    tipo: "Rey",
+    personajes: datos
+      .filter(personaje => personaje instanceof Rey)
+      .sort((obj, obj2) => obj.edad - obj2.edad)
+  });
+  totalDePersonajesFinal.push({
+    tipo: "Luchador",
+    personajes: datos
+      .filter(personaje => personaje instanceof Luchador)
+      .sort((obj, obj2) => obj.edad - obj2.edad)
+  });
+  totalDePersonajesFinal.push({
+    tipo: "Asesor",
+    personajes: datos
+      .filter(personaje => personaje instanceof Asesor)
+      .sort((obj, obj2) => obj.edad - obj2.edad)
+  });
+  totalDePersonajesFinal.push({
+    tipo: "Escudero",
+    personajes: datos
+      .filter(personaje => personaje instanceof Escudero)
+      .sort((obj, obj2) => obj.edad - obj2.edad)
+  });
+}
+
+
