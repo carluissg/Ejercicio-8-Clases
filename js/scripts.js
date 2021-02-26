@@ -1,3 +1,4 @@
+//Crear class madre e hijas
 class Personajes {
   nombre;
   familia;
@@ -9,9 +10,7 @@ class Personajes {
     this.familia = suFamilia;
     this.edad = suEdad;
     this.estado = suEstado;
-
   }
-
   morir() {
     this.estado = "muerto";
   }
@@ -83,6 +82,7 @@ class Escudero extends Personajes {
   }
 }
 
+//Crear personajes específicos
 const joeffreyBaratheon =
   new Rey("Joeffrey", "Baratheon", 20, "vivo", 1);
 
@@ -98,18 +98,36 @@ const tyrionLannister =
 const bronn =
   new Escudero("Bronn", "na", 45, "vivo", 7);
 
+//Crear array con todos los personajes
 const totalPersonajes = [joeffreyBaratheon, jamieLannister,
   daenerysTargaryen, tyrionLannister, bronn];
 
+//Devolver mensaje Luchadores
 function mensajePersonajes(nPersonajes) {
   const totalMensajes = nPersonajes
     .filter(personaje => personaje.arma)
-    .map(personaje => personaje.comunicar());
+    .map(personaje => personaje.comunicarse());
   return totalMensajes;
 }
 
+console.log(mensajePersonajes(totalPersonajes));
+
+//Imprimir la serie
+
+const serie = totalPersonajes
+  .map(personaje => personaje.serie)
+  .filter((personaje, i, personajes) => personajes.indexOf(personaje) === i)
+  .toString();
+
+console.log(serie);
+
+
+//Imprimir todos los mensajes
 const mensajes = totalPersonajes.map((personaje) => personaje.comunicarse());
 
 console.log(mensajes);
 
-console.log(mensajePersonajes(totalPersonajes));
+//Matar a Jamie y a Tyrion
+
+
+
