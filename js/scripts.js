@@ -57,17 +57,11 @@ class Asesor extends Personajes {
   }
 }
 class Escudero extends Personajes {
-  personajeQueSirve;
+  personajeQueSirve = "Luchador";
   gradoPelotismo;
   constructor(suNombre, suFamilia, suEdad, suEstado, pelota) {
     super(suNombre, suFamilia, suEdad, suEstado);
     this.nivelPelotismo(pelota);
-  }
-
-  set personajeQuesirve(personaje) {
-    if (personaje === Luchador) {
-      this.personajeQuesirve = personaje;
-    }
   }
 
   nivelPelotismo(nivel) {
