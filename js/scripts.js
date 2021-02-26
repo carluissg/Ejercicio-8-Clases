@@ -106,7 +106,7 @@ const totalPersonajes = [joeffreyBaratheon, jamieLannister,
 //Devolver mensaje Luchadores UTILIZAR instanceof
 function mensajePersonajes(nPersonajes) {
   const totalMensajes = nPersonajes
-    .filter(personaje => personaje.arma)
+    .filter(personaje => personaje instanceof Luchador)
     .map(personaje => personaje.comunicarse());
   return totalMensajes;
 }
@@ -114,7 +114,6 @@ function mensajePersonajes(nPersonajes) {
 console.log(mensajePersonajes(totalPersonajes));
 
 //Imprimir la serie
-
 const serie = totalPersonajes
   .map(personaje => personaje.serie)
   .filter((personaje, i, personajes) => personajes.indexOf(personaje) === i)
