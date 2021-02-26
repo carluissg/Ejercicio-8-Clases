@@ -1,3 +1,4 @@
+
 class Personajes {
   nombre;
   familia;
@@ -108,8 +109,24 @@ function mensajePersonajes(nPersonajes) {
   return totalMensajes;
 }
 
+const resumenPersonajes = elementos => elementos.map(elemento => {
+  const resumen = {
+    tipo: elemento.Personajes,
+    personaje: [
+      {
+        nombre: elemento.Personajes.nombre,
+        estado: elemento.Personajes.estado,
+        edad: elemento.Personajes.edad,
+      }
+    ]
+  };
+  return resumen;
+});
+
 const mensajes = totalPersonajes.map((personaje) => personaje.comunicarse());
 
 console.log(mensajes);
 
 console.log(mensajePersonajes(totalPersonajes));
+
+
