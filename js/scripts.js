@@ -32,20 +32,20 @@ class Luchador extends Personajes {
   constructor(suNombre, suFamilia, suEdad, suEstado, suArma, suDestreza) {
     super(suNombre, suFamilia, suEdad, suEstado);
     this.arma = suArma;
-    this.destreza = suDestreza;
+    this.nivelDestreza(suDestreza);
+  }
+  nivelDestreza(nivel) {
+    if (nivel <= 10) {
+      this.destreza = nivel;
+    } else {
+      this.destreza = 10;
+    }
   }
   comunicarse() {
     return "Primero pego y luego pregunto";
   }
-
-  set destreza(suDestreza) {
-    if (suDestreza > 0 && suDestreza <= 10) {
-      this.destreza = suDestreza;
-    } else if (suDestreza > 10) {
-      this.destreza = 10;
-    }
-  }
 }
+
 class Asesor extends Personajes {
   personajeAsesorado;
   constructor(suNombre, suFamilia, suEdad, suEstado, asesorado) {
@@ -61,7 +61,7 @@ class Escudero extends Personajes {
   gradoPelotismo;
   constructor(suNombre, suFamilia, suEdad, suEstado, pelota) {
     super(suNombre, suFamilia, suEdad, suEstado);
-    this.gradoPelotismo = pelota;
+    this.nivelPelotismo(pelota);
   }
 
   set personajeQuesirve(personaje) {
@@ -70,10 +70,10 @@ class Escudero extends Personajes {
     }
   }
 
-  set gradoPelotismo(pelota) {
-    if (pelota > 0 && pelota <= 10) {
-      this.gradoPelotismo = pelota;
-    } else if (pelota > 10) {
+  nivelPelotismo(nivel) {
+    if (nivel <= 10) {
+      this.gradoPelotismo = nivel;
+    } else {
       this.gradoPelotismo = 10;
     }
   }
@@ -87,7 +87,7 @@ const joeffreyBaratheon =
   new Rey("Joeffrey", "Baratheon", 20, "vivo", 1);
 
 const jamieLannister =
-  new Luchador("Jamie", "Lannister", 40, "vivo", "espada", 7);
+  new Luchador("Jamie", "Lannister", 40, "vivo", "espada", 12);
 
 const daenerysTargaryen =
   new Luchador("Daenerys", "Targaryen", 30, "vivo", "dragón", 10);
@@ -96,13 +96,14 @@ const tyrionLannister =
   new Asesor("Tyrion", "Lannister", 40, "vivo", "Daenerys");
 
 const bronn =
-  new Escudero("Bronn", "na", 45, "vivo", 7);
+  new Escudero("Bronn", "na", 45, "vivo", 5);
+
 
 //Crear array con todos los personajes
 const totalPersonajes = [joeffreyBaratheon, jamieLannister,
   daenerysTargaryen, tyrionLannister, bronn];
 
-//Devolver mensaje Luchadores
+//Devolver mensaje Luchadores UTILIZAR instanceof
 function mensajePersonajes(nPersonajes) {
   const totalMensajes = nPersonajes
     .filter(personaje => personaje.arma)
