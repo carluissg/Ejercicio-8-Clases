@@ -105,6 +105,7 @@ function mensajePersonajes(nPersonajes) {
   return totalMensajes;
 }
 
+
 console.log(mensajePersonajes(totalPersonajes));
 
 //Imprimir la serie
@@ -123,5 +124,18 @@ console.log(mensajes);
 
 //Matar a Jamie y a Tyrion
 
+matar(totalPersonajes);
+
+function matar(personajes) {
+  for (const personaje of personajes) {
+    if (personaje.nombre.toLowerCase() === "tyrion") {
+      personaje.morir();
+    } else if (personaje.nombre.toLowerCase() === "jamie") {
+      personaje.morir();
+    }
+  }
+}
+
+//Resumen de los Personajes
 
 
