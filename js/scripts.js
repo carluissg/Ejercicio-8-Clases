@@ -124,49 +124,20 @@ console.log(mensajes);
 
 //Matar a Jamie y a Tyrion
 
-matar(totalPersonajes);
-
-function matar(personajes) {
-  for (const personaje of personajes) {
-    if (personaje.nombre.toLowerCase() === "tyrion") {
-      personaje.morir();
-    } else if (personaje.nombre.toLowerCase() === "jamie") {
-      personaje.morir();
-    }
-  }
-}
+jamieLannister.morir();
+tyrionLannister.morir();
 
 //Resumen de los Personajes
 
 
-resumenPersonajes(totalPersonajes);
+const resumenPersonajes = elementos => elementos
+  .map(personajes => personajes.constructor.name)
+  .filter((persona, i, personas) => personas.indexOf(persona) === i)
+  .map(persona => ({
+    persona, personajes: elementos
+      .filter(personaje => personaje.constructor.name === persona)
+  }));
 
-function resumenPersonajes(datos) {
-  const totalDePersonajesFinal = [];
-  totalDePersonajesFinal.push({
-    tipo: "Rey",
-    personajes: datos
-      .filter(personaje => personaje instanceof Rey)
-      .sort((obj, obj2) => obj.edad - obj2.edad)
-  });
-  totalDePersonajesFinal.push({
-    tipo: "Luchador",
-    personajes: datos
-      .filter(personaje => personaje instanceof Luchador)
-      .sort((obj, obj2) => obj.edad - obj2.edad)
-  });
-  totalDePersonajesFinal.push({
-    tipo: "Asesor",
-    personajes: datos
-      .filter(personaje => personaje instanceof Asesor)
-      .sort((obj, obj2) => obj.edad - obj2.edad)
-  });
-  totalDePersonajesFinal.push({
-    tipo: "Escudero",
-    personajes: datos
-      .filter(personaje => personaje instanceof Escudero)
-      .sort((obj, obj2) => obj.edad - obj2.edad)
-  });
-}
+console.log(resumenPersonajes(totalPersonajes));
 
 
