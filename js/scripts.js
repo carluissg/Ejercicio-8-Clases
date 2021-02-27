@@ -131,11 +131,11 @@ tyrionLannister.morir();
 
 
 const resumenPersonajes = elementos => elementos
-  .map(personajes => personajes.constructor.name)
+  .map(personajes => personajes.constructor.suNombre)
   .filter((persona, i, personas) => personas.indexOf(persona) === i)
   .map(persona => ({
     persona, personajes: elementos
-      .filter(personaje => personaje.constructor.name === persona)
+      .filter(personaje => personaje.constructor.suNombre === persona)
   }));
 
 console.log(resumenPersonajes(totalPersonajes));
